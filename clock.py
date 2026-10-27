@@ -5,7 +5,6 @@ from __future__ import annotations
 import math
 import tkinter as tk
 from datetime import datetime
-from tkinter import font as tkfont
 
 
 BACKGROUND_TOP = (10, 14, 30)
@@ -301,7 +300,6 @@ class ClockApp:
         )
 
         time_value = now.strftime("%H:%M" if self.is_24_hour else "%I:%M")
-        time_value = time_value.lstrip("0") if not self.is_24_hour else time_value
         time_size = int(min(105, width * (0.18 if compact else 0.17), height * 0.40))
         time_size = max(39, time_size)
         mid_y = top + height * (0.49 if compact else 0.50)
@@ -312,7 +310,7 @@ class ClockApp:
                 mid_y,
                 text=time_value,
                 fill=TEXT,
-                font=("Segoe UI", time_size, "light"),
+                font=("Segoe UI", time_size),
                 tags=("scene",),
             )
         else:
@@ -322,7 +320,7 @@ class ClockApp:
                 mid_y,
                 text=time_value,
                 fill=TEXT,
-                font=("Segoe UI", time_size, "light"),
+                font=("Segoe UI", time_size),
                 tags=("scene",),
             )
             self.canvas.create_text(
